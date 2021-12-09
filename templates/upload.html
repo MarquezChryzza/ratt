@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' %}?20181209" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}?20181209" rel="stylesheet" />
+    <link href="{% static 'css/modal.css' %}?20181209" rel="stylesheet" />
+    <title>Home</title>
+</head>
+<body>
+
+     {% include 's_navbar.html'%}
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h1 class="classtitle mt-4">Class</h1>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                            <div class="drop dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                School Year 2020-2021
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#">School Year 2021-2022</a>
+                                    <a class="dropdown-item" href="#">School Year 2022-2023</a>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="intro container-fluid mt-5 mr-5 table-container">
+                <table class="table table-striped">
+                    <thead class="thead">
+                      <tr>
+                        <th scope="col">Activity #</th>
+                        <th scope="col">Activity Name</th>
+                        <th scope="col">Due</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Date Submitted</th>
+                        <th scope="col">Remarks</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Basic English Reading</td>
+                        <td>04/02/21</td>
+                        <td><a href="/" data-toggle="modal" data-target="#exampleModalCenter">Upload</a></td>
+                        <td>04/02/21</td>
+                        <td>Graded</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Basic English Reading</td>
+                        <td>04/02/21</td>
+                        <td>Submitted</td>
+                        <td>04/02/21</td>
+                        <td>Graded</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Basic English Reading</td>
+                        <td>04/02/21</td>
+                        <td>Submitted</td>
+                        <td>04/02/21</td>
+                        <td>Graded</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>Basic English Reading</td>
+                        <td>04/02/21</td>
+                        <td>Submitted</td>
+                        <td>04/02/21</td>
+                        <td>Graded</td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Upload</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="" method="POST">{% csrf_token %}
+
+                        <input type="text" name="title" placeholder="Enter Video Title here"><br>
+                        <input type="file" name="video" accept="video/*">
+                        <button type="submit"> Upload New Video </button>
+                    
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </main>      
+</body>
+</html>

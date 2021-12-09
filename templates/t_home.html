@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' %}?20181209" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}?20181209" rel="stylesheet" />
+    <!-- <link href="{% static 'css/navbar.css' %}?20181209" rel="stylesheet" /> -->
+
+    <title>Home</title>
+</head>
+<body>
+
+     {% include 't_navbar.html'%}
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="container-home">
+                    <div class="row">
+                      <div class="col-md containerth">
+                        <div class="container-title1 center">
+                          <h2>TIMELINE</h2>
+                        </div>
+                        <div class="container-act">
+                          <h5>Activity 1</h5>
+                          <p>Due on Friday April 20, 2021</p>
+                        </div> 
+                      </div>
+                      <div class="col-md containerth2">
+                        <div class="container-calen">
+                          <h3>Timeline</h3>
+                          <h5>Activity 1</h5>
+                          <p>Due on Friday April 20, 2021</p>
+                        </div>
+                        <div class="container-calen">
+                          <h3>Timeline</h3>
+                          <h5>Activity 1</h5>
+                          <p>Due on Friday April 20, 2021</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div> 
+              <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </main>      
+</body>
+</html>

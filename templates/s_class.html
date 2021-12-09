@@ -1,0 +1,56 @@
+{% if user.is_student or user.is_staff %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' %}?20181209" rel="stylesheet" />
+    <link href="{% static 'css/s_class.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/modal.css' %}" rel="stylesheet" />
+    <title>Home</title>
+</head>
+<body>
+
+     {% include 's_navbar.html'%}
+   
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="row">
+                </div>
+            </div>
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                  <div class="upload-wrap p-0">
+                    <div class="col-mt-2">
+                      <h1 class="classtitle mt-2">Upload Video</h1>
+                    </div>
+                      <form enctype="multipart/form-data" method="POST" action="">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Upload"/>
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+            
+      </main>      
+</body>
+</html>
+{% elif user.is_teacher %}
+<div class="jumbotron">
+  <h1 class="display-4">Page Not Found</h1>
+  <p class="lead">Sorry, This page is missing or does not exist.</p>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="javascript:history.back()">Go Back</a>
+  </p>
+</div>
+{% endif %}

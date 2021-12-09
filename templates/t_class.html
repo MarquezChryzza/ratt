@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<body>
+    {% include 't_navbar.html'%}
+ 
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+              <div class="container-fluid px-4 sectioncon">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <div class="h3">
+                     <h3>SECTION:</h3>
+                    </div>
+                   </div>
+                   <div class="col-sm-2">
+                    <div class="drop">
+                      <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         Daffodil
+                         </a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                             <a class="dropdown-item" href="#">Rose</a>
+                             <a class="dropdown-item" href="#">Lily</a>
+                           </div>
+                     </div>
+                    </div>
+                   </div>
+                   <div class="col-sm-2">
+                    <div class="drop">
+                      <div class="drop dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        School Year 2020-2021
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">School Year 2021-2022</a>
+                            <a class="dropdown-item" href="#">School Year 2022-2023</a>
+                        </div>
+                    </div>
+                    </div>
+                   </div>
+               </div>
+              </div>
+                <div class="container-fluid px-4 contsect">
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary">+ Add</button>
+                      </div> 
+
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary">Download</button>
+                        </div>
+                        <div class="container my-4 post-wrapper">
+                        <!-- Search Start -->
+                        <div class="col-md-auto search">
+                          <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                          </form>
+                              </div>
+                        <!-- End Search -->
+                          </form>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+          
+            <div class="intro container-fluid mt-5 mr-5 table-container">
+              <table class="table table-striped">
+                  <thead class="thead">
+                    <tr>
+                      <th scope="col">Student ID</th>
+                      <th scope="col">Last Name</th>
+                      <th scope="col">First Name</th>
+                      <th scope="col">Due</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Remarks</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for data in data %}
+                   <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>
+                      {{ data.first_name }}
+                    </td>
+                    <td>
+                     {{ data.last_name }}
+                   </td>
+                   <!-- <td>
+                     { % if sample.status == 'NotSub' %}
+                     <button type="button" class="btn btn-warning">Not Submitted</button>
+                     { % endif %}
+                     { % if sample.status == 'Sub' %}
+                     <button type="button" class="btn btn-warning">Submitted</button>
+                     { % endif %}
+                   </td> -->
+                  </tr>
+                  {% endfor %}
+                 </tbody>
+                </table>
+
+                  
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Johnny.txt</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md modal-container1">
+                          <div class="container-trans">
+                            <h3>transcribe container</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare pulvinar molestie. 
+                              Nunc vitae tempor sem, varius facilisis urna. Vestibulum vestibulum quis odio sed accumsan. 
+                              Sed condimentum varius iaculis. Maecenas eu nibh nec nunc molestie sodales id a sapien. 
+                              Praesent urna nisi, tristique vitae urna a, ultricies ultrices neque</p>
+                          </div>
+                          <div class="container-phon">
+                            <h3>phoneme container</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare pulvinar molestie. 
+                              Nunc vitae tempor sem, varius facilisis urna. Vestibulum vestibulum quis odio sed accumsan. 
+                              Sed condimentum varius iaculis. Maecenas eu nibh nec nunc molestie sodales id a sapien. 
+                              Praesent urna nisi, tristique vitae urna a, ultricies ultrices neque</p>
+                          </div>
+                          <div class="container-info">
+                            <div class="row">
+                              <div class="col-md">
+                                <h5>Characters: 250 </h5>
+                              </div>
+                              <div class="col-md">
+                                <h5>Words: 250 </h5>
+                              </div>
+                            </div>
+                            <form action="/">
+                              <label for="score">Score:</label>
+                              <input type="text" id="score" name="score"><br><br>
+                            </form>
+                          </div>
+                        </div>
+                        <div class="col-md modal-container2">
+                          <div class="container-trans">
+                            <h3>transcribe container</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare pulvinar molestie. 
+                              Nunc vitae tempor sem, varius facilisis urna. Vestibulum vestibulum quis odio sed accumsan. 
+                              Sed condimentum varius iaculis. Maecenas eu nibh nec nunc molestie sodales id a sapien. 
+                              Praesent urna nisi, tristique vitae urna a, ultricies ultrices neque</p>
+                          </div>
+                          <div class="container-phon">
+                            <h3>phoneme container</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare pulvinar molestie. 
+                              Nunc vitae tempor sem, varius facilisis urna. Vestibulum vestibulum quis odio sed accumsan. 
+                              Sed condimentum varius iaculis. Maecenas eu nibh nec nunc molestie sodales id a sapien. 
+                              Praesent urna nisi, tristique vitae urna a, ultricies ultrices neque</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </main>      
+</body>
+</html>

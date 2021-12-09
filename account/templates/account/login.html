@@ -1,0 +1,68 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Login</title>
+      <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' %}?20181209" rel="stylesheet" />
+    <link href="{% static 'css/login2.css' %}" rel="stylesheet" />
+    <link href="{% static 'images' %}" rel="stylesheet" />
+
+	</head>
+	<body class="align-self-center  body-home">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+                        <div class="row justify-content-center">
+                            <div class="text-center">
+                                <img style="width:120px;" src="{% static 'images/ratt.png' %}">
+                                <h2 class="heading-section">Login Account</h2>
+                            </div>
+                        </div>
+                        <form action="#" class="signin-form"  method="POST">
+                            {% csrf_token %}
+                            <div class="form-group1">
+                                <input type="text" class="form-control" id="user" placeholder="Username" name="username" required autofocus>
+                            </div>
+                        <div class="form-group2">
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                        </div>
+                        {% for error in login_form.errors %}
+                        <p>
+                            {% for error in field.errors %}
+                        <p>{{error}}</p>
+                        {% endfor %}
+                        </p>
+                        {% endfor %}
+
+                        {% if login_form.non_field_errors %}
+                        <div>
+                            <p>{{login_form.non_field_errors}}</p>
+                        </div>
+
+                        {% endif %}
+                        <div class="form-group3 d-md-flex">
+                            <div class="w-50">
+                                <label class="checkbox-wrap checkbox-primary">Remember Me
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group4">
+                            <button type="submit" class="form-control btn btn-primary submit px-3">Login</button>
+                        </div>
+                    </form>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	</body>
+</html>
+

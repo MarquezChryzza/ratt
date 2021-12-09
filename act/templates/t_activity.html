@@ -1,0 +1,107 @@
+{% if user.is_teacher or user.is_staff %}
+<!DOCTYPE html>
+<html lang="en"> 
+{% load static %}
+
+<!-- {% load crispy_forms_tags %} -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/t_activity.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<body>
+    {% include 't_navbar.html'%}
+ 
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container">
+                <div class="conty px-4">
+                    <div class="row">
+                      <div class="col-md-4 ml-auto">
+                        <div>
+                          <button type="button" class="btn btn-primary" href="/" data-toggle="modal" data-target="#exampleModalCenter">+ Add Activity</button>
+                        </div>
+                      </div>
+                        <div class="col-sm-2">
+                          <div class="col-md-4 mt-4">
+                          </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+          
+            <div class="intro container-fluid mt-5 mr-5 table-container">
+                <table class="table table-striped">
+                    <thead class="thead">
+                      <tr>
+                        <th scope="col">Activity#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Material</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for act in act %}
+                     <tr>
+                        <th>{{ act.a_number }}</th>
+                        <th>{{ act.a_name }}</th>
+                        <td>{{ act.a_material }}</td>
+                     </tr>
+                      {% endfor %}
+                   </tbody>
+                    
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Activity</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div>
+                        {% if submiitted %}
+                        New activity added!
+
+                        {% else %}
+
+                          <form action="" method="post" enctype="multipart/form-data">
+                              {% csrf_token %}
+
+                              {{ form.as_p }}
+                              <button type="submit" value="Submit" class="btn btn-primary">Add Activity</button>
+                          </form>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      {% endif%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              </div>
+              </div>
+            </div>
+      </main>      
+</body>
+
+</html>
+{% elif user.is_student %}
+<div class="jumbotron">
+  <h1 class="display-4">Page Not Found</h1>
+  <p class="lead">Sorry, This page is missing or does not exist.</p>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="javascript:history.back()">Go Back</a>
+  </p>
+</div>
+{% endif %}

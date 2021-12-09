@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' %}?20181209" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <!-- <link href="{% static 'css/navbar.css' %}?20181209" rel="stylesheet" /> -->
+
+    <title>Home</title>
+</head>
+<body>
+
+     {% include 's_navbar.html'%}
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="container-home">
+                    <div class="row">
+                      <div class="col-md container1">
+                        <div class="container-title1 center">
+                          <h2>TIMELINE</h2>
+                        </div>
+                        <div class="container-act">
+                          <h3>Activity 1</h3>
+                          <p>Due on Friday April 20, 2021</p>
+                        </div> 
+                      </div>
+                      <div class="col-md container2">
+                        <button class="joinbtn" data-toggle="modal" data-target="#exampleModalCenter"><h2>JOIN CLASS</h2></button>
+                        <div class="container-calen">
+                          <h3>transcribe container</h3>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ornare pulvinar molestie. 
+                            Nunc vitae tempor sem, varius facilisis urna. Vestibulum vestibulum quis odio sed accumsan. 
+                            Sed condimentum varius iaculis. Maecenas eu nibh nec nunc molestie sodales id a sapien. 
+                            Praesent urna nisi, tristique vitae urna a, ultricies ultrices neque</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div> 
+              <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Daffodil
+                     </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                         <a class="dropdown-item" href="#">Rose</a>
+                         <a class="dropdown-item" href="#">Lily</a>
+                       </div>
+                 </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Enroll Class</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </main>      
+</body>
+</html>

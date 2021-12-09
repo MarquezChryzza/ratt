@@ -1,0 +1,157 @@
+{% if user.is_teacher or user.is_staff %}
+<!DOCTYPE html>   
+<html>   
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="{% static 'https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' %}?20181209" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}?20181209" rel="stylesheet" />
+    <link href="{% static 'css/videos.css' %}?20181209" rel="stylesheet" />
+    <link href="{% static 'css/modal.css' %}?20181209" rel="stylesheet" />
+    <title>Display</title>
+</head>  
+<body>     
+    <div>
+        <h1>Video Display</h1>
+    </div>
+
+    {% include 't_navbar.html'%}
+
+    <div id="layoutSidenav_content">
+        <main>
+          <div class="container-fluid px-4">
+            <div class="container-fluid px-4 conty">
+                <div class="row">
+                  <div class="col-md-6">
+
+                  </div>
+                    <div class="search">
+                      <form class="d-none d-md-inline-block form-inline ms-auto-md-4">
+                          <div class="input-group">
+                              <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                              <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                          </div>
+                      </form>
+                    </div>
+                </div>
+            </div>  
+        </div>
+            <div class="intro container-fluid mt-5 mr-5 table-container">
+                <table class="table table-striped">
+                    <thead class="thead">
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Activity#</th>
+                        <th scope="col">Video</th>
+                        <th scope="col">Text</th>
+                        <th scope="col">Expected Score</th>
+                        <th scope="col">Actual Score</th>
+                        <th scop="col">Accurary</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for sample in samples %}
+                      <tr>
+                          <th scope="row">{{ sample.student.first_name }} {{ sample.student.last_name }}</th>
+                          <th scope="row">{{ sample.act.a_number }}</th>
+                          <td>
+                            <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" onclick='myFunction()' href="#!">heheheh</button> -->
+                            <video width='300' controls>
+                              <source src='{{ MEDIA_URL }}{{ sample.video }}' type='video/mp4'>
+                              Your browser does not support the video tag.
+                            </video>
+                          </td>
+                          <td>
+                            {{ sample.transcript }}
+                          </td>
+                          <td>
+                            {{ sample.expected }}
+                          </td>
+                          <td>
+                            {{ sample.actual }}
+                          </td>
+                          <td>
+                            {{ sample.accuracy }}%
+                          </td>
+                         
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+                  </table>
+                  
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Upload</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      {% for sample in samples %}
+                      {{ forloop.counter }}
+                        <video width='300' controls>
+                            <source src='{{ MEDIA_URL }}{{ samples }}' type='video/mp4'>
+                            Your browser does not support the video tag.
+                        </video>
+                      {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- MODAL 2 -->
+              <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Upload</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                    {% for sample in samples %}
+                      <p>
+                      {{ sample.transcript }}
+                      </p>
+                    {% endfor %}
+                    
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              
+            </div>
+      </main>  
+    
+
+</body>     
+</html>  
+{% elif user.is_student %}
+<div class="jumbotron">
+  <h1 class="display-4">Page Not Found</h1>
+  <p class="lead">Sorry, This page is missing or does not exist.</p>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="javascript:history.back()">Go Back</a>
+  </p>
+</div>
+{% endif %}

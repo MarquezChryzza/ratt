@@ -1,0 +1,151 @@
+{% block content %}
+{% load static %}
+<style>
+    .body-home{
+    background-color: rgba(69,101,118,255);
+    background-size: cover;
+    background-attachment: fixed;   
+    z-index: -1;
+  }
+h2{
+    text-align: center;
+    padding-bottom: 10%;
+    font-family: 'Teko', sans-serif;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 100;
+    color: rgb(8, 85, 148);
+    
+}
+
+.container-form{
+    background-color: rgba(255, 255, 255, 0.163);
+    border-radius: 5%;
+    border: black solid 2px;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 10px 10px 0 rgba(18, 57, 199, 0.687);
+    transition: 0.3s;
+    text-align: center;
+}
+.container-form:hover{
+    background-color: rgba(255, 255, 255, 0.748);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,4); 
+   
+}
+
+.form-group input{
+    border: none;
+    outline: none;
+    background: none;
+    color: none;
+    border-bottom: solid 2px;
+    color: rgb(255, 217, 0);
+}
+.form-group span{
+    background: none;
+    border: none;
+}
+.form-group i{
+    padding-right: 2%;
+}
+.btn{
+    background-color: orange;
+    font-family:'Enriqueta', serif ;
+}
+.btn:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,4);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1); 
+    -webkit-transition: 1.3s;
+    -moz-transition: 1.3s;
+    -o-transition: 1.3s;
+    transition: 1.3s;
+}
+.circle1{
+    border-radius: 50;
+    width: 35%;
+    height: 35%;
+    margin: 10%;
+}
+input, label{
+    font-family: 'Enriqueta', serif;
+    font-size: 15px;
+}
+</style>
+
+<!DOCTYPE html>
+<html lang="en" id="bootstrap-override">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <title>Login</title>
+
+</head>
+<body class="align-self-center body-home">
+    <div class="container">
+                <div class="container-form">
+                    <h2 class="form-title">Login Account</h2> 
+                    <form class="px-4 py-3" action="#" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="input-group mb-3 input-group-sm">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><ion-icon name="person-outline"></ion-icon></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="user" placeholder="Username" name="username" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-3 input-group-sm">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                                </div>
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                            </div>
+                        </div>
+                        {% for error in login_form.errors %}
+                            <p>
+                                {% for error in field.errors %}
+                            <p>{{error}}</p>
+                            {% endfor %}
+                            </p>
+                        {% endfor %}
+
+                        {% if login_form.non_field_errors %}
+                        <div>
+                            <p>{{login_form.non_field_errors}}</p>
+                        </div>
+
+                        {% endif %}
+                        <div class="form-group">
+                            <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                            <label class="form-check-label" for="dropdownCheck">
+                                Remember me
+                            </label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-sm btn-block"  type="submit"> Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock content %}
